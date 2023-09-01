@@ -25,7 +25,6 @@ import '@fontsource/roboto/700.css';
 
 const inter = Inter({ subsets: ['latin'] })
 const drawerWidth = 240;
-const navItems = ['Home', 'Tracking', 'Block Viewer', 'Profile'];
 
 export const metadata = {
   title: 'Forest Supply Tracking Viewer',
@@ -35,44 +34,35 @@ export const metadata = {
 export default function RootLayout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const router = useRouter()
-
+  const router = useRouter();
+  const nav = [
+    {title:'Home',url:'/'},
+    {title:'Tracking',url:'/tracking'},
+    {title:'Block Viewer',url:'/blockviewer'},
+    {title:'Profile',url:'/profile'}
+  ];
+  
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleNav=(index)=>{
-    switch (index) {
-      case 0:
-        router.push('/')
-        break;
-      case 1:
-        router.push('/tracking')
-        break;      
-      case 2:
-        router.push('/blockviewer')
-        break;
-      case 3:
-         router.push('/profile')
-        break;
-      default:
-        break;
-    }
+  const handleNav=(url)=>{
+    router.push(url);
   }
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}} >
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+        {nav.map((item,index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }} onClick={()=>handleNav(item.url)}>
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -83,7 +73,7 @@ export default function RootLayout(props) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', justifyContent:'center' }}>
           <CssBaseline />
           <AppBar component="nav">
             <Toolbar>
@@ -104,9 +94,9 @@ export default function RootLayout(props) {
                 Forest Supply
               </Typography>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {navItems.map((item,index) => (
-                  <Button key={item} sx={{ color: '#fff' }} onClick={()=>handleNav(index)}>
-                    {item}
+                {nav.map((item,index) => (
+                  <Button key={index} sx={{ color: '#fff' }} onClick={()=>handleNav(item.url)}>
+                    {item.title}
                   </Button>
                 ))}
               </Box>
@@ -129,7 +119,7 @@ export default function RootLayout(props) {
               {drawer}
             </Drawer>
           </nav>
-          <Box component="main" sx={{ p: 3 }} className="flex min-h-screen flex-col items-center justify-between p-24">
+          <Box component="main" sx={{ p: 3 }} className="flex min-h-screen flex-col items-center justify-center p-24">
             {props.children}
           </Box>
         </Box>
