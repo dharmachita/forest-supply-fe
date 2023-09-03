@@ -1,26 +1,332 @@
-const delieryData=
-[
+export const deliveryData=[
     {
-        "fecha": "01-01-2023"         ,
-        "remito": "1111-1111"         ,
-        "producto": "Pino Ellioti"    ,
-        "proveedor": "Forestal Eldorado"     ,
-        "origen": "AR"        ,
-        "responsable": "Forestal Eldorado"   ,
-        "estado": "En tránsito"        ,
-        "ubicacion": "Eldorado" 
+        id:"bf79ea00-b33d-403a-8f21-435d0e91327a",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
     },
     {
-        "fecha": "01-01-2023"         ,
-        "remito": "1111-1111"         ,
-        "producto": "Pino Ellioti"    ,
-        "proveedor": "Forestal Eldorado"     ,
-        "origen": "AR"        ,
-        "responsable": "Forestal Eldorado"   ,
-        "estado": "En tránsito"        ,
-        "ubicacion": "Eldorado" 
+        id:"18c31736-4fbd-4aed-9eb3-d6ffb4d96cf9",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"39df09de-0ba8-46fc-9612-4588cd1eb2d4",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"46f9c460-5dd2-4848-a879-6d2c8a447de4",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"eb4b8a39-92fd-4c51-b455-e427f4445fc7",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"75a518f8-670b-44f4-ab75-7aaa071fc9bf",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"ce271b92-1d02-4c22-badc-a8354532c0ef",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"aaf0f7e3-6f2e-4a94-98f7-c394cc9f00de",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"7bb2fff4-bda0-421a-bffc-d94d9b7a37cf",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"a85cd101-a4d7-4d17-940d-7b74465865a8",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"60dda34a-d211-4bce-8c87-55abb6553e4a",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"78e5ebeb-dd37-48f4-b8cd-a2eca986429f",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"c29dbb21-606b-456d-be60-d1c80d9be39d",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"3e69446b-d91d-412a-8c16-d74cebe7bb80",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"d770452c-3b75-4f09-92f0-ed7149ac0d67",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"77f42ed0-70ba-4bfa-a775-a14d190b2419",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"85dfdef8-4673-40b2-9dab-1fcad9be25c7",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"b4b378d9-8b30-47a4-83a4-e7cb3b2ad529",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"e01b6d5e-90fc-495c-9bb7-71d4d1939c60",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"8f00d680-c0e4-4e9e-bf14-67e14955f748",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"1b9b4fbc-c4f5-4e92-8d88-e63adf80c9a0",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"6a864947-5b1e-4bc8-b185-b5a55a4c821c",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"3a99efae-d6ab-4935-bbc5-7f46e57371ab",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"6442dedc-025f-4ebb-9d1f-b6b52c69eab2",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"fb573242-d97b-49cc-bfd0-80b1314d314f",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"82eddadd-6b1c-47c0-bb2b-4bb8bcb41b19",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"df96b1dc-f97b-48c7-939d-f9948e7eebce",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "En Tránsito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"32c490eb-1066-40e8-9ff2-b16bfd8c5708",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Entregado"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"3ef6d8da-c4dc-4127-9354-4e8d636de9fb",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Depósito"        ,
+        ubicacion: "Eldorado" 
+    },
+    {
+        id:"94192b2b-2ff5-46ce-8218-26fcd11ff568",
+        fecha: "01-01-2023"         ,
+        remito: "1111-1111"         ,
+        producto: "Pino Ellioti"    ,
+        proveedor: "Forestal Eldorado"     ,
+        origen: "AR"        ,
+        responsable: "Forestal Eldorado"   ,
+        estado: "Cosecha"        ,
+        ubicacion: "Eldorado" 
     }
-
 ]
-
-export default delieryData;

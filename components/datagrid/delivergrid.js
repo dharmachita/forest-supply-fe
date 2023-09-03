@@ -6,6 +6,10 @@ import { DataGrid, gridClasses,esES  } from '@mui/x-data-grid';
 import { Chip,IconButton,Tooltip } from '@mui/material';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import { useRouter } from 'next/navigation';
+import { CircularProgress,Box } from '@mui/material';
+
+//data
+import { trackingData } from '@/utils/data/trackingData';
 
 const ODD_OPACITY = 0.2;
 
@@ -42,52 +46,17 @@ const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
   },
 }));
 
-const data=[
-    {
-        id:1,
-        fecha: "01-01-2023"         ,
-        remito: "1111-1111"         ,
-        producto: "Pino Ellioti"    ,
-        proveedor: "Forestal Eldorado"     ,
-        origen: "AR"        ,
-        responsable: "Forestal Eldorado"   ,
-        estado: "En Tránsito"        ,
-        ubicacion: "Eldorado" 
-    },
-    {
-        id:2,
-        fecha: "01-01-2023"         ,
-        remito: "1111-1111"         ,
-        producto: "Pino Ellioti"    ,
-        proveedor: "Forestal Eldorado"     ,
-        origen: "AR"        ,
-        responsable: "Forestal Eldorado"   ,
-        estado: "Entregado"        ,
-        ubicacion: "Eldorado" 
-    },
-    {
-        id:3,
-        fecha: "01-01-2023"         ,
-        remito: "1111-1111"         ,
-        producto: "Pino Ellioti"    ,
-        proveedor: "Forestal Eldorado"     ,
-        origen: "AR"        ,
-        responsable: "Forestal Eldorado"   ,
-        estado: "Depósito"        ,
-        ubicacion: "Eldorado" 
-    },
-    {
-        id:4,
-        fecha: "01-01-2023"         ,
-        remito: "1111-1111"         ,
-        producto: "Pino Ellioti"    ,
-        proveedor: "Forestal Eldorado"     ,
-        origen: "AR"        ,
-        responsable: "Forestal Eldorado"   ,
-        estado: "Cosecha"        ,
-        ubicacion: "Eldorado" 
-    }
-]
+const CustomLoading=()=>{
+  return(
+    <Box className='container' sx={{ justifyContent:'center',alignItems:'center' }}>
+      <CircularProgress color="success" />
+    </Box>
+  )
+}
+
+const formatoFecha=(fecha)=>{
+  return `${fecha.slice(8,10)}-${fecha.slice(5,7)}-${fecha.slice(0,4)} ${fecha.slice(11)}`
+}
 
 export default function StripedGrid() {
 
@@ -98,9 +67,9 @@ export default function StripedGrid() {
     useEffect(() => {  
       const cargaDatos=async()=>{
         setTimeout(() => {
-            setRows(data);
+            setRows(trackingData);
             setLoading(false);
-        }, 3000);
+        }, 2500);
       }
       setLoading(true);
       cargaDatos();
@@ -112,56 +81,72 @@ export default function StripedGrid() {
             field: 'fecha',
             headerName: 'Fecha',
             minWidth: 80,
+            flex:1,
+            valueGetter: ({row}) => {
+              const mov=row?.movimientos;
+              const track=mov[mov.length-1]?.tracking;
+              return formatoFecha(track[track.length-1]?.timestamp);
+            },
         },
         {
             field: 'remito',
             headerName: 'Remito',
             minWidth: 80,
+            flex:1,
+            valueGetter: ({row}) => {
+              const mov=row?.movimientos;
+              return mov[mov.length-1]?.remito;
+            },
         },
         {
             field: 'producto',
             headerName: 'Producto',
             minWidth: 120,
+            flex:1,
         },
         {
             field: 'proveedor',
             headerName: 'Proveedor',
             minWidth: 200,
+            flex:1,
         },
         {
             field: 'responsable',
             headerName: 'Responsable',
             minWidth: 200,
+            flex:1,
+            valueGetter: ({row}) => {
+              const mov=row?.movimientos;
+              return mov[mov.length-1]?.responsable;
+            },
         },
         {
             field: 'estado',
             headerName: 'Estado',
             minWidth: 120,
+            flex:1,
             renderCell: ({row}) => {
-                if (row.estado==='Cosecha') {
-                    return <Chip label={row.estado} color="primary" variant="outlined" />
+                const mov=row?.movimientos;
+                if (mov[mov.length-1]?.status==='Cosecha') {
+                    return <Chip label={mov[mov.length-1]?.status} color="primary" variant="outlined" />
                 }
-                if (row.estado==='En Tránsito') {
-                    return <Chip label={row.estado} color="warning" variant="outlined" />
+                if (mov[mov.length-1]?.status==='En Tránsito') {
+                    return <Chip label={mov[mov.length-1]?.status} color="warning" variant="outlined" />
                 }
-                if (row.estado==='Depósito') {
-                    return <Chip label={row.estado} color="warning" variant="outlined" />
+                if (mov[mov.length-1]?.status==='Depósito') {
+                    return <Chip label={mov[mov.length-1]?.status} color="warning" variant="outlined" />
                 }
-                if (row.estado==='Entregado') {
-                    return <Chip label={row.estado} color="success" variant="outlined" />
+                if (mov[mov.length-1]?.status==='Entregado') {
+                    return <Chip label={mov[mov.length-1]?.status} color="success" variant="outlined" />
                 }
                 return null;
               },
         },
         {
-            field: 'ubicacion',
-            headerName: 'Ubicación',
-            minWidth: 120,
-        },
-        {
             field: 'action',
             headerName: '',
             minWidth: 80,
+            flex:1,
             renderCell: ({row}) => (
                 <Tooltip title="Detalle">
                     <IconButton aria-label="fingerprint" color="success" onClick={() => router.push(`tracking/${row.id}`)}>
@@ -174,16 +159,20 @@ export default function StripedGrid() {
       ];
 
     return (
-        <div style={{ height:'500px', width: '100%'}}>
-        <StripedDataGrid
-            loading={loading}
-            columns={columns}
-            rows={rows}
-            localeText={esES.components.MuiDataGrid.defaultProps.localeText}
-            getRowClassName={(params) =>
-            params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
-            }
-        />
+        <div style={{ height:'100%', width: '100%', paddingLeft:'1rem',paddingRight:'1rem'}}>
+          <StripedDataGrid
+              slots={{
+                loadingOverlay: CustomLoading,
+              }}
+              loading={loading}
+              columns={columns}
+              rows={rows}
+              localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+              autoPageSize
+              getRowClassName={(params) =>
+              params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
+              }
+          />
         </div>
     );
 }
